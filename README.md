@@ -1,2 +1,2 @@
 # syrup-web-site
-Backend of web site for syrup stall
+Backend website for a syrup kiosk
