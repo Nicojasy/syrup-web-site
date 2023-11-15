@@ -1,13 +1,14 @@
 ﻿namespace Syrup.Core.Models.Entities;
 
-public class Product
+public partial class Product
 {
     public long Id { get; set; }
-    public long SellerId { get; set; }
-    public int Price { get; set; }
-    public string Name { get; set; } = null!;
-    public string Description { get; set; } = null!;
 
-    public Seller Seller { get; set; } = null!;
-    public List<Favorite> Favorites { get; set; } = [];
+    public long CompanyId { get; set; }
+
+    public virtual Company Company { get; set; } = null!;
+
+    public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; } = new List<FavoriteProduct>();
+
+    public virtual ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
 }

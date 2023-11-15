@@ -1,7 +1,6 @@
 using IdGen.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Syrup.Core.Models.Options;
-using Syrup.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;

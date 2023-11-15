@@ -1,6 +1,5 @@
 using Syrup.Application.Repositories.Interfaces;
 using Syrup.Core.Models.Entities;
-using Syrup.Infrastructure.Repositories;
 
 namespace Syrup.Application.Repositories;
 

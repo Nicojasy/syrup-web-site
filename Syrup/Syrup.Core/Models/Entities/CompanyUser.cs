@@ -1,12 +1,14 @@
 ﻿namespace Syrup.Core.Models.Entities;
 
-public partial class Order
+public partial class CompanyUser
 {
     public long Id { get; set; }
 
+    public long CompanyId { get; set; }
+
     public long UserId { get; set; }
 
-    public virtual ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
+    public virtual Company Company { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;
 }

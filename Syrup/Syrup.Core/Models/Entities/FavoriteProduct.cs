@@ -1,14 +1,14 @@
 ﻿namespace Syrup.Core.Models.Entities;
 
-public partial class UserChat
+public partial class FavoriteProduct
 {
     public long Id { get; set; }
 
     public long UserId { get; set; }
 
-    public long ChatId { get; set; }
+    public long ProductId { get; set; }
 
-    public virtual Chat Chat { get; set; } = null!;
+    public virtual Product Product { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;
 }

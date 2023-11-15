@@ -1,15 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Syrup.Core.Models.Entities;
 
-namespace Syrup.Core;
+namespace Syrup.Core.Models.Entities;
 
-public partial class SyrupContext : DbContext
+public partial class TestContext : DbContext
 {
-    public SyrupContext()
+    public TestContext()
     {
     }
 
-    public SyrupContext(DbContextOptions<SyrupContext> options)
+    public TestContext(DbContextOptions<TestContext> options)
         : base(options)
     {
     }
@@ -33,6 +32,10 @@ public partial class SyrupContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserChat> UserChats { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=Test;User Id=postgres;Password=admin");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
