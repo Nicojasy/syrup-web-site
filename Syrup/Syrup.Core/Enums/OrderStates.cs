@@ -1,7 +1,7 @@
 ﻿namespace Syrup.Core.Enums;
 
 [Flags]
-public enum OrderState
+public enum OrderStates
 {
     New = 1 << 0,
     PendingPayment = 1 << 1,

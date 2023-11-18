@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Syrup.Core.Models.Entities;
 
-namespace Syrup.Core;
+namespace Syrup.Core.Models.Entities;
 
 public partial class SyrupContext : DbContext
 {
@@ -13,6 +12,8 @@ public partial class SyrupContext : DbContext
         : base(options)
     {
     }
+
+    public virtual DbSet<Basket> Baskets { get; set; }
 
     public virtual DbSet<Chat> Chats { get; set; }
 
@@ -34,8 +35,24 @@ public partial class SyrupContext : DbContext
 
     public virtual DbSet<UserChat> UserChats { get; set; }
 
+    public virtual DbSet<DeletedUserMessage> DeletedUserMessage { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Basket>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("Basket_pkey");
+
+            entity.ToTable("Basket");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+
+            entity.HasOne(d => d.User).WithMany(p => p.Baskets)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Basket_UserId_fkey");
+        });
+
         modelBuilder.Entity<Chat>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("Chat_pkey");
@@ -189,6 +206,25 @@ public partial class SyrupContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("UserChat_UserId_fkey");
+        });
+
+        modelBuilder.Entity<DeletedUserMessage>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("DeletedUserMessage_pkey");
+
+            entity.ToTable("DeletedUserMessage");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+
+            entity.HasOne(d => d.Message).WithMany(p => p.DeletedUserMessages)
+                .HasForeignKey(d => d.MessageId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("DeletedUserMessage_MessageId_fkey");
+
+            entity.HasOne(d => d.User).WithMany(p => p.DeletedUserMessages)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("DeletedUserMessage_UserId_fkey");
         });
 
         OnModelCreatingPartial(modelBuilder);

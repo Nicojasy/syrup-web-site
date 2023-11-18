@@ -1,10 +1,20 @@
-﻿namespace Syrup.Core.Models.Entities;
+﻿using Syrup.Core.Enums;
+
+namespace Syrup.Core.Models.Entities;
 
 public partial class Product
 {
     public long Id { get; set; }
 
     public long CompanyId { get; set; }
+
+    public int Price { get; set; }
+
+    public CurrencyCode Currency { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public string Description { get; set; } = null!;
 
     public virtual Company Company { get; set; } = null!;
 
