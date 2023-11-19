@@ -1,4 +1,4 @@
-﻿namespace Syrup.Core.Database.Enums;
+﻿namespace Syrup.Core.Db.Enums;
 
 public enum CompanyUserRole
 {

@@ -1,7 +1,8 @@
 using IdGen.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Syrup.Core.Database.Entities;
+using Syrup.Core.Db.Entities;
 using Syrup.Core.Settings;
+using Syrup.Infrastructure;
 using Syrup.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,8 +23,7 @@ services.AddDbContext<SyrupContext>(options =>
         .UseNpgsql(dbConnectionString)
         .LogTo(Console.WriteLine));
 
-services
-    .AddIdGen(123);
+services.AddInfrastructure(configuration);
 
 var app = builder.Build();
 

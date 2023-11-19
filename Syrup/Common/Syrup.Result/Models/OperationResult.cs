@@ -1,4 +1,4 @@
-namespace Common.ResultLib.Models;
+namespace Syrup.Result.Models;
 public class OperationResult
 {
     public OperationResult() => IsSuccess = true;

@@ -1,7 +1,7 @@
 using Syrup.Application.Interfaces.Repositories;
-using Syrup.Core.Database.Entities;
+using Syrup.Core.Db.Entities;
 
-namespace Syrup.Application.Repositories;
+namespace Syrup.Infrastructure.Repositories;
 
 public class ChatRepository : IChatRepository
 {

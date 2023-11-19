@@ -1,4 +1,4 @@
-using Syrup.Core.Database.Entities;
+using Syrup.Core.Db.Entities;
 
 namespace Syrup.Application.Interfaces.Repositories;
 

@@ -14,6 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common\Syrup.Controller\Syrup.Controller.csproj" />
+    <ProjectReference Include="..\Common\Syrup.Result\Syrup.Result.csproj" />
     <ProjectReference Include="..\Common\Syrup.Settings\Syrup.Settings.csproj" />
     <ProjectReference Include="..\Syrup.Infrastructure\Syrup.Infrastructure.csproj" />
   </ItemGroup>

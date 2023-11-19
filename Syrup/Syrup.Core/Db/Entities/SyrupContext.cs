@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Syrup.Core.Database.Entities;
+namespace Syrup.Core.Db.Entities;
 
 public class SyrupContext : DbContext
 {

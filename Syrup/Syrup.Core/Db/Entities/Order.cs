@@ -1,6 +1,6 @@
-﻿using Syrup.Core.Database.Enums;
+﻿using Syrup.Core.Db.Enums;
 
-namespace Syrup.Core.Database.Entities;
+namespace Syrup.Core.Db.Entities;
 
 public partial class Order
 {

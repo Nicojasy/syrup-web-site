@@ -1,4 +1,4 @@
-﻿namespace Syrup.Application.Interfaces.Services;
+﻿namespace Syrup.Infrastructure.Services;
 public class UserService
 {
 }

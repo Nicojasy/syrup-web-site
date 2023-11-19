@@ -1,6 +1,6 @@
-using Common.ResultLib.Models;
+using Syrup.Result.Models;
 
-namespace Common.ResultLib.Helpers;
+namespace Syrup.Result.Helpers;
 
 /// <summary>
 /// Helper for working with classes based on <seealso cref="OperationResult"/> 

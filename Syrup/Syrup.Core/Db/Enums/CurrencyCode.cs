@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Syrup.Core.Database.Enums;
+namespace Syrup.Core.Db.Enums;
 
 /// <summary>
 /// Enumeration of ISO 4217 currency codes, indexed with their respective ISO 4217 numeric currency codes. 

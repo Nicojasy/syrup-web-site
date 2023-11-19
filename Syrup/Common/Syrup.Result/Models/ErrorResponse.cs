@@ -1,4 +1,4 @@
-namespace Common.ResultLib.Models;
+namespace Syrup.Result.Models;
 
 /// <summary>
 /// 

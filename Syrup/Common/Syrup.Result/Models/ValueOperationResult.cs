@@ -1,4 +1,4 @@
-namespace Common.ResultLib.Models;
+namespace Syrup.Result.Models;
 public class ValueOperationResult<T> : OperationResult
 {
     public ValueOperationResult(T value) => Value = value;

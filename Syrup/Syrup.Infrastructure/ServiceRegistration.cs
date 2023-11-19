@@ -1,18 +1,23 @@
 using IdGen.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Syrup.Application;
 using Syrup.Application.Interfaces.Repositories;
-using Syrup.Application.Repositories;
+using Syrup.Application.Interfaces.Services;
 using Syrup.Core.Settings;
+using Syrup.Infrastructure.Repositories;
+using Syrup.Infrastructure.Services;
 
-namespace Messenger.Infrastructure;
+namespace Syrup.Infrastructure;
 
 public static class ServiceRegistration
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         return services
+            .AddAutoMapper(ApplicationAssembly.Get())
             .AddIdGenServices(configuration)
+            .AddServices()
             .AddRepositories();
     }
 
@@ -24,6 +29,10 @@ public static class ServiceRegistration
         services.AddIdGen(idGenOptions.GeneratorId);
         return services;
     }
+
+    public static IServiceCollection AddServices(this IServiceCollection services) =>
+        services
+            .AddScoped<ICompanyService, CompanyService>();
 
     public static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services

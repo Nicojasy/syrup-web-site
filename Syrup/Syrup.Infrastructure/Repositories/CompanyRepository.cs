@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Syrup.Application.Interfaces.Repositories;
-using Syrup.Core.Database.Entities;
+using Syrup.Core.Db.Entities;
 
-namespace Syrup.Application.Repositories;
+namespace Syrup.Infrastructure.Repositories;
 
 public class CompanyRepository : ICompanyRepository
 {
@@ -14,7 +14,7 @@ public class CompanyRepository : ICompanyRepository
         _syrupContext.Companies.FindAsync(id);
 
     public Task<Company?> GetAsync(string name) =>
-        _syrupContext.Companies.FirstOrDefaultAsync(x=>x.Name == name);
+        _syrupContext.Companies.FirstOrDefaultAsync(x => x.Name == name);
 
     public async Task AddAsync(Company company)
     {
@@ -37,6 +37,9 @@ public class CompanyRepository : ICompanyRepository
             await _syrupContext.SaveChangesAsync();
         }
     }
+
+    public Task<CompanyUser?> GetCompanyUserAsync(long companyId, long userId) =>
+        _syrupContext.CompanyUsers.FirstOrDefaultAsync(x => x.CompanyId == companyId && x.UserId == userId);
 
     public async Task AddCompanyUserAsync(CompanyUser companyUser)
     {

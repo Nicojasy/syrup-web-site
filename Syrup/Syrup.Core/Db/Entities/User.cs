@@ -1,4 +1,4 @@
-﻿namespace Syrup.Core.Database.Entities;
+﻿namespace Syrup.Core.Db.Entities;
 
 public partial class User
 {

@@ -1,4 +1,4 @@
-﻿namespace Syrup.Core.Database.Enums;
+﻿namespace Syrup.Core.Db.Enums;
 
 [Flags]
 public enum OrderStates

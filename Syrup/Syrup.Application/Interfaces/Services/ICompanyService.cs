@@ -1,9 +1,13 @@
-﻿using Common.ResultLib.Models;
-using Syrup.Application.Models.Requests;
-using Syrup.Core.Database.Entities;
+﻿using Syrup.Application.Dtos.Requests;
+using Syrup.Application.Dtos.Responses;
+using Syrup.Core.Db.Entities;
+using Syrup.Result.Models;
 
 namespace Syrup.Application.Interfaces.Services;
 public interface ICompanyService
 {
-    Task<ValueOperationResult<Company>> Register(CreateCompanyRequest request, long creatorId);
+    Task<CompanyResponse?> GetAsync(long companyId);
+    Task<ValueOperationResult<Company>> CreateAsync(CreateCompanyRequest request, long creatorId);
+    Task<ValueOperationResult<Company>> EditAsync(EditCompanyRequest request, long userId);
+    Task<OperationResult> DeleteAsync(long companyId, long userId);
 }

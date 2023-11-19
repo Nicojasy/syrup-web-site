@@ -1,4 +1,4 @@
-namespace Syrup.Application.Models.Requests;
+namespace Syrup.Application.Dtos.Requests;
 
 public record CreateCompanyRequest(
     string Name,
