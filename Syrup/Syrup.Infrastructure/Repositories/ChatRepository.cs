@@ -1,5 +1,5 @@
-using Syrup.Application.Repositories.Interfaces;
-using Syrup.Core.Models.Entities;
+using Syrup.Application.Interfaces.Repositories;
+using Syrup.Core.Database.Entities;
 
 namespace Syrup.Application.Repositories;
 
@@ -7,15 +7,10 @@ public class ChatRepository : IChatRepository
 {
     private readonly SyrupContext _syrupContext;
 
-    public ChatRepository(SyrupContext syrupContext)
-    {
-        _syrupContext = syrupContext;
-    }
+    public ChatRepository(SyrupContext syrupContext) => _syrupContext = syrupContext;
 
-    public ValueTask<Chat?> GetAsync(long id)
-    {
-        return _syrupContext.Chats.FindAsync(id);
-    }
+    public ValueTask<Chat?> GetAsync(long id) =>
+        _syrupContext.Chats.FindAsync(id);
 
     public async Task AddAsync(Chat chat)
     {
@@ -23,14 +18,10 @@ public class ChatRepository : IChatRepository
         await _syrupContext.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(Chat chat)
+    public Task UpdateAsync(Chat chat)
     {
-        var dbChat = await _syrupContext.Chats.FindAsync(chat.Id);
-        if (dbChat != null)
-        {
-            dbChat.Name = chat.Name;
-            await _syrupContext.SaveChangesAsync();
-        }
+        _syrupContext.Chats.Update(chat);
+        return _syrupContext.SaveChangesAsync();
     }
 
     public Task DeleteForUserAsync(long chatId, long userId)

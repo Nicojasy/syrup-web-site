@@ -1,5 +1,5 @@
-using Syrup.Application.Repositories.Interfaces;
-using Syrup.Core.Models.Entities;
+using Syrup.Application.Interfaces.Repositories;
+using Syrup.Core.Database.Entities;
 
 namespace Syrup.Application.Repositories;
 
@@ -11,32 +11,25 @@ public class MessageRepository : IMessageRepository
     {
         _syrupContext = syrupContext;
     }
-
-    public ValueTask<Chat?> GetAsync(long id)
-    {
-        return _syrupContext.Chats.FindAsync(id);
-    }
+    
+    public ValueTask<Message?> GetAsync(long id) =>
+        _syrupContext.Messages.FindAsync(id);
 
     public async Task AddAsync(Message message)
     {
-        await _syrupContext.Chats.AddAsync(message);
+        await _syrupContext.Messages.AddAsync(message);
         await _syrupContext.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(Chat chat)
+    public Task UpdateAsync(Message message)
     {
-        var dbChat = await _syrupContext.Chats.FindAsync(chat.Id);
-        if (dbChat != null)
-        {
-            dbChat.Name = chat.Name;
-            await _syrupContext.SaveChangesAsync();
-        }
+        _syrupContext.Messages.Update(message);
+        return _syrupContext.SaveChangesAsync();
     }
 
-    public Task DeleteForUserAsync(long chatId, long userId)
+    public Task AddDeletedUserMessageAsync(DeletedUserMessage deletedUserMessage)
     {
-        var userChats = _syrupContext.UserChats.Where(x => x.ChatId == chatId && x.UserId == userId);
-        _syrupContext.UserChats.RemoveRange(userChats);
+        _syrupContext.DeletedUserMessage.AddAsync(deletedUserMessage);
         return _syrupContext.SaveChangesAsync();
     }
 }

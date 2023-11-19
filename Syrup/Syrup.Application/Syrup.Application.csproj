@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common\Syrup.Result\Syrup.Result.csproj" />
     <ProjectReference Include="..\Syrup.Core\Syrup.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Responses\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdGen" Version="3.0.3" />
   </ItemGroup>
 
 </Project>

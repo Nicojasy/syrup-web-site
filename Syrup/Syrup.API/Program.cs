@@ -1,14 +1,14 @@
 using IdGen.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Syrup.Core.Models.Options;
+using Syrup.Core.Database.Entities;
+using Syrup.Core.Settings;
+using Syrup.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
-var serviceOptionsSection = configuration.GetSection(nameof(ServiceOptions)).;
-services.Configure<ServiceOptions>(serviceOptionsSection);
-var serviceOptions = serviceOptionsSection.Get<ServiceOptions>();
+var serviceOptions = services.ConfigureAndGet<ServiceOptions>(configuration);
 
 builder.Services.AddControllers();
 
@@ -16,8 +16,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var dbConnectionString = configuration.GetConnectionString("SyrupConnection");
-services.AddDbContext<SyrupContext>(options => options.UseNpgsql(dbConnectionString));
+var dbConnectionString = configuration.GetConnectionString(ConnectionConstants.SyrupApiConnection);
+services.AddDbContext<SyrupContext>(options =>
+    options
+        .UseNpgsql(dbConnectionString)
+        .LogTo(Console.WriteLine));
 
 services
     .AddIdGen(123);
