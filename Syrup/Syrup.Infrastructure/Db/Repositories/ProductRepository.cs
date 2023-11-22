@@ -1,13 +1,13 @@
 using Syrup.Application.Interfaces.Repositories;
 using Syrup.Core.Db.Entities;
 
-namespace Syrup.Infrastructure.Repositories;
+namespace Syrup.Infrastructure.Db.Repositories;
 
 public class ProductRepository : IProductRepository
 {
-    private readonly SyrupContext _syrupContext;
+    private readonly SyrupDbContext _syrupContext;
 
-    public ProductRepository(SyrupContext syrupContext) => _syrupContext = syrupContext;
+    public ProductRepository(SyrupDbContext syrupContext) => _syrupContext = syrupContext;
 
     public ValueTask<Product?> GetAsync(long id) =>
         _syrupContext.Products.FindAsync(id);

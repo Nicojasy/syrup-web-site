@@ -2,13 +2,13 @@
 
 namespace Syrup.Core.Db.Entities;
 
-public class SyrupContext : DbContext
+public class SyrupDbContext : DbContext
 {
-    public SyrupContext()
+    public SyrupDbContext()
     {
     }
 
-    public SyrupContext(DbContextOptions<SyrupContext> options)
+    public SyrupDbContext(DbContextOptions<SyrupDbContext> options)
         : base(options)
     {
     }

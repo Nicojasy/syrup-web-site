@@ -1,8 +1,7 @@
-using IdGen.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Syrup.Core.Db.Entities;
 using Syrup.Core.Settings;
-using Syrup.Infrastructure;
+using Syrup.Infrastructure.Extensions;
 using Syrup.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var dbConnectionString = configuration.GetConnectionString(ConnectionConstants.SyrupApiConnection);
-services.AddDbContext<SyrupContext>(options =>
+services.AddDbContext<SyrupDbContext>(options =>
     options
         .UseNpgsql(dbConnectionString)
         .LogTo(Console.WriteLine));
@@ -26,6 +25,8 @@ services.AddDbContext<SyrupContext>(options =>
 services.AddInfrastructure(configuration);
 
 var app = builder.Build();
+
+await app.EnsureMigrationOfContextAsync<SyrupDbContext>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

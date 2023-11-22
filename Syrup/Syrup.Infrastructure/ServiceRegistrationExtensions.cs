@@ -5,12 +5,12 @@ using Syrup.Application;
 using Syrup.Application.Interfaces.Repositories;
 using Syrup.Application.Interfaces.Services;
 using Syrup.Core.Settings;
-using Syrup.Infrastructure.Repositories;
+using Syrup.Infrastructure.Db.Repositories;
 using Syrup.Infrastructure.Services;
 
-namespace Syrup.Infrastructure;
+namespace Syrup.Infrastructure.Extensions;
 
-public static class ServiceRegistration
+public static class ServiceRegistrationExtensions
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {

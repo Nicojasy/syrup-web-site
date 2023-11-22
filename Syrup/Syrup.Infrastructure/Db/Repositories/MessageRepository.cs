@@ -1,13 +1,13 @@
 using Syrup.Application.Interfaces.Repositories;
 using Syrup.Core.Db.Entities;
 
-namespace Syrup.Infrastructure.Repositories;
+namespace Syrup.Infrastructure.Db.Repositories;
 
 public class MessageRepository : IMessageRepository
 {
-    private readonly SyrupContext _syrupContext;
+    private readonly SyrupDbContext _syrupContext;
 
-    public MessageRepository(SyrupContext syrupContext)
+    public MessageRepository(SyrupDbContext syrupContext)
     {
         _syrupContext = syrupContext;
     }

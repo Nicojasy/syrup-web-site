@@ -2,13 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using Syrup.Application.Interfaces.Repositories;
 using Syrup.Core.Db.Entities;
 
-namespace Syrup.Infrastructure.Repositories;
+namespace Syrup.Infrastructure.Db.Repositories;
 
 public class CompanyRepository : ICompanyRepository
 {
-    private readonly SyrupContext _syrupContext;
+    private readonly SyrupDbContext _syrupContext;
 
-    public CompanyRepository(SyrupContext syrupContext) => _syrupContext = syrupContext;
+    public CompanyRepository(SyrupDbContext syrupContext) => _syrupContext = syrupContext;
 
     public ValueTask<Company?> GetAsync(long id) =>
         _syrupContext.Companies.FindAsync(id);

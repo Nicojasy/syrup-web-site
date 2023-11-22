@@ -1,13 +1,13 @@
 using Syrup.Application.Interfaces.Repositories;
 using Syrup.Core.Db.Entities;
 
-namespace Syrup.Infrastructure.Repositories;
+namespace Syrup.Infrastructure.Db.Repositories;
 
 public class OrderRepository : IOrderRepository
 {
-    private readonly SyrupContext _syrupContext;
+    private readonly SyrupDbContext _syrupContext;
 
-    public OrderRepository(SyrupContext syrupContext) => _syrupContext = syrupContext;
+    public OrderRepository(SyrupDbContext syrupContext) => _syrupContext = syrupContext;
 
     public ValueTask<Order?> GetAsync(long id) =>
         _syrupContext.Orders.FindAsync(id);
