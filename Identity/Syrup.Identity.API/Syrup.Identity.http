@@ -1,0 +1,6 @@
+@Syrup.Identity_HostAddress = http://localhost:5014
+
+GET {{Syrup.Identity_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

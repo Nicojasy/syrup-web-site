@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34227.203
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrup.Identity.API", "Syrup.Identity.API\Syrup.Identity.API.csproj", "{93495DB4-2CC1-41F3-A58E-FFD3F4FF25F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrup.Identity.Application", "Syrup.Identity.Application\Syrup.Identity.Application.csproj", "{B98879B0-8C20-4CDF-A504-950D5B4A6485}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrup.Identity.Infrastructure", "Syrup.Identity.Infrastructure\Syrup.Identity.Infrastructure.csproj", "{C7CA77D9-78F3-4550-999C-41F953DB7A98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrup.Identity.Core", "Syrup.Identity.Core\Syrup.Identity.Core.csproj", "{5AA4866E-4F96-440F-A337-F06347A0E542}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{6B3AF794-9BDB-4D97-9795-422210982F4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrup.Authorize", "Common\Syrup.Authorize\Syrup.Authorize.csproj", "{E1CDD1AD-2050-4F58-B5B0-1C29323A89D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93495DB4-2CC1-41F3-A58E-FFD3F4FF25F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93495DB4-2CC1-41F3-A58E-FFD3F4FF25F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93495DB4-2CC1-41F3-A58E-FFD3F4FF25F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93495DB4-2CC1-41F3-A58E-FFD3F4FF25F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B98879B0-8C20-4CDF-A504-950D5B4A6485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B98879B0-8C20-4CDF-A504-950D5B4A6485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B98879B0-8C20-4CDF-A504-950D5B4A6485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B98879B0-8C20-4CDF-A504-950D5B4A6485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7CA77D9-78F3-4550-999C-41F953DB7A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7CA77D9-78F3-4550-999C-41F953DB7A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7CA77D9-78F3-4550-999C-41F953DB7A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7CA77D9-78F3-4550-999C-41F953DB7A98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AA4866E-4F96-440F-A337-F06347A0E542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AA4866E-4F96-440F-A337-F06347A0E542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AA4866E-4F96-440F-A337-F06347A0E542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AA4866E-4F96-440F-A337-F06347A0E542}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1CDD1AD-2050-4F58-B5B0-1C29323A89D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1CDD1AD-2050-4F58-B5B0-1C29323A89D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1CDD1AD-2050-4F58-B5B0-1C29323A89D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1CDD1AD-2050-4F58-B5B0-1C29323A89D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1CDD1AD-2050-4F58-B5B0-1C29323A89D8} = {6B3AF794-9BDB-4D97-9795-422210982F4D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E847F17B-B956-43D5-92E0-BE83A499573C}
+	EndGlobalSection
+EndGlobal
