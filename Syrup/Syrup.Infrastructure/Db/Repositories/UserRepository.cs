@@ -13,7 +13,7 @@ public class UserRepository : IUserRepository
     public ValueTask<User?> GetAsync(long id) =>
         _syrupContext.Users.FindAsync(id);
 
-    public Task<User?> GetAsync(string nickname) =>
+    public Task<User?> GetByNicknameAsync(string nickname) =>
         _syrupContext.Users.FirstOrDefaultAsync(x => x.Nickname == nickname);
 
     public async Task AddAsync(User user)

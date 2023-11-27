@@ -1,6 +1,6 @@
 namespace Syrup.Application.Dtos.Requests;
 
 public record EditCompanyRequest(
-    long id,
+    long Id,
     string Name,
     string? Description);

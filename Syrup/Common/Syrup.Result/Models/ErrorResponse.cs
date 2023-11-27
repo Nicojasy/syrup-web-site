@@ -1,13 +1,11 @@
 namespace Syrup.Result.Models;
-
-/// <summary>
-/// 
-/// </summary>
 public class ErrorResponse
 {
     public string? ErrorMessage { get; set; }
 
     public string? ErrorParameters { get; set; }
+
+    //todo: add type for response
 
     public ErrorResponse(string? errorMessage)
     {

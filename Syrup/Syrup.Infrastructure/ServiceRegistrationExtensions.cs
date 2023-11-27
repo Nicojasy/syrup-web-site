@@ -1,14 +1,16 @@
-using IdGen.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Syrup.Application;
 using Syrup.Application.Interfaces.Repositories;
 using Syrup.Application.Interfaces.Services;
-using Syrup.Core.Settings;
+using Syrup.Core.Db;
+using Syrup.IdGen.Extensions;
+using Syrup.Infrastructure.Db;
 using Syrup.Infrastructure.Db.Repositories;
 using Syrup.Infrastructure.Services;
 
-namespace Syrup.Infrastructure.Extensions;
+namespace Syrup.Infrastructure;
 
 public static class ServiceRegistrationExtensions
 {
@@ -18,16 +20,18 @@ public static class ServiceRegistrationExtensions
             .AddAutoMapper(ApplicationAssembly.Get())
             .AddIdGenServices(configuration)
             .AddServices()
-            .AddRepositories();
+            .AddRepositories()
+            .AddDbContext(configuration)
+            .AddJwtBearerAuth(configuration);
     }
 
-    public static IServiceCollection AddIdGenServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        //todo: change exception type
-        var idGenOptions = configuration.GetRequiredSection(nameof(IdGenOptions)).Get<IdGenOptions>()
-            ?? throw new ArgumentException(nameof(IdGenOptions));
-        services.AddIdGen(idGenOptions.GeneratorId);
-        return services;
+        var dbConnectionString = configuration.GetConnectionString(ConnectionConstants.SyrupApiConnection);
+        return services.AddDbContext<SyrupDbContext>(options =>
+            options
+                .UseNpgsql(dbConnectionString)
+                .LogTo(Console.WriteLine));
     }
 
     public static IServiceCollection AddServices(this IServiceCollection services) =>

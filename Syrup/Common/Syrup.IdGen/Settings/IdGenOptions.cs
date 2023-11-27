@@ -1,4 +1,4 @@
-﻿namespace Syrup.Core.Settings
+﻿namespace Syrup.IdGen.Settings
 {
     public class IdGenOptions
     {

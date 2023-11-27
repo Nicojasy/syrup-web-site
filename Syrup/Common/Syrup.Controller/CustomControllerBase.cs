@@ -9,9 +9,14 @@ public class CustomControllerBase : ControllerBase
 {
     protected long GetUserId() => long.Parse(HttpContext.User.Identity!.Name!);
 
-    protected IActionResult ServerResult(OperationResult result) =>
-        result.IsSuccess ? Ok() : BadRequest(result.GetErrorResponse());
+    protected IActionResult ServerResult(OperationResult result)
+        => result.IsSuccess ? Ok() : HandleError();
 
-    protected IActionResult ServerResult<T>(ValueOperationResult<T> result) =>
-        result.IsSuccess ? Ok(result.Value) : BadRequest(result.GetErrorResponse());
+    protected IActionResult ServerResult<T>(ValueOperationResult<T> result)
+        => result.IsSuccess ? Ok(result.Value) : BadRequest(result.GetErrorResponse());
+
+    private IActionResult HandleError()
+    {
+        BadRequest(result.GetErrorResponse());
+    }
 }

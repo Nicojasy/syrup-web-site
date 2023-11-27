@@ -8,7 +8,7 @@ using Syrup.Controller;
 namespace Syrup.API.Controllers;
 
 [ApiController]
-[AllowAnonymous]
+[Authorize]
 [Route("[controller]")]
 public class CompanyController : CustomControllerBase
 {

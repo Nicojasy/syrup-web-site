@@ -65,7 +65,7 @@ public class CompanyService : ICompanyService
         if (IsValidCompanyName(request.Name))
             return ResultHelper.Bad<Company>("Incorrect company name");
 
-        var company = await _companyRepository.GetAsync(request.id);
+        var company = await _companyRepository.GetAsync(request.Id);
         if (company is null)
             return ResultHelper.Bad<Company>("The company not found");
 

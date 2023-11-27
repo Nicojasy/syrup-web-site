@@ -6,8 +6,6 @@ public partial class User
 
     public string Nickname { get; set; } = null!;
 
-    public string PasswordHash { get; set; } = null!;
-
     public string? Email { get; set; }
 
     public string? AboutMyself { get; set; }

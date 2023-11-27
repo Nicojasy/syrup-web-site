@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Syrup.Infrastructure.Extensions;
+namespace Syrup.Migration.Extensions;
 public static class EnsureMigrationAppExtensions
 {
     public static Task EnsureMigrationOfContextAsync<T>(this IApplicationBuilder app)
@@ -10,7 +10,7 @@ public static class EnsureMigrationAppExtensions
     {
         var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
         using var serviceScope = serviceScopeFactory.CreateScope();
-        
+
         var context = serviceScope.ServiceProvider.GetRequiredService<T>();
         return context.Database.MigrateAsync();
     }
